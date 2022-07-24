@@ -13,3 +13,8 @@ int main(){
 #include <bits/extc++.h>
 using namespace __gnu_pbds;
 template<class T> using oset= tree<T ,null_type, less<T>, rb_tree_tag,tree_order_statistics_node_update>;
+
+
+#pragma GCC optimize("O3,unroll-loops")
+#pragma GCC target("avx2,bmi,bmi2,lzcnt,popcnt")
+// swap two STL object is O(1)
