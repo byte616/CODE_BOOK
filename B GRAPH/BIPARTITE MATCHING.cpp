@@ -8,7 +8,7 @@ void add_edge(int left,int right){
 bool dfs(int x){
     for(auto i:v[x]){
         if(vis[i])continue;
-        vis[x]=1;
+        vis[i]=1;
         if(match[i]==0||dfs(match[i])){
         //match[i]==0->didn't match with other
             match[i]=x;
