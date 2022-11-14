@@ -1,10 +1,36 @@
-int pa[MAX_N];
-int find(in x){
-    return pa[x]==x ? x : pa[x]=find(pa[x]);
+//O(alpha(N))
+
+int djset[100005];
+int treesize[100005];
+
+void build(int n){
+    for(int i=0;i<=n;i++){
+        djset[i] = i;
+        treesize[i] = 1;
+    }
 }
-bool uni(int a,int b){
-    int _a=find(a),_b=find(b);
-    if(_a==_b)return 0;
-    pa[_b]=_a;
-    return 1;
+
+int findBoss(int x){
+    if(djset[x]== x){
+        return x;
+    }
+    return djset[x]=findBoss(djset[x]);
+}
+
+void combine(int a,int b){
+    a = findBoss(a);
+    b = findBoss(b);
+    if(a == b) return;
+    int temp;
+    if(treesize[a] < treesize[b]){
+        temp = a;
+        a = b;
+        b = temp;
+    }
+    djset[b] = a;
+    treesize[a] += treesize[b];
+}
+
+bool same(int a,int b){
+	return findBoss(a)==findBoss(b);
 }
