@@ -1,7 +1,5 @@
-#include<iostream>
-#include<deque>
-#include<cassert>
-using namespace std;
+// DP 斜率優化
+// O(N)
 using ll = long long;
 
 struct Line{
@@ -56,20 +54,9 @@ struct Convex_hull_trick{
 };
 
 int main(){
-        int q;
-        cin>>q;
-        ll mode, a, b, x;
         Convex_hull_trick cht;
-        while(q--){
-                cin>>mode;
-                if(mode == 0){
-                        cin>>a>>b;
-                        cht.insert(a, b);
-                }else{
-                        cin>>x;
-                        cout<<cht.find_max(x)<<'\n';
-                }
-                //cht.display();
-        }
+        cht.insert(a, b);                // y = ax + b
+        cout<<cht.find_max(x)<<'\n';
+        //cht.display();
         return 0;
 }
