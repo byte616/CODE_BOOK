@@ -1,9 +1,7 @@
-#include<iostream>
-using namespace std;
- 
 int z[2000006];
  
 void Z_algorithm(const string &s){
+    // O(|S|)
     int x = 0, y = 0;
     z[0] = -1;
     for(int k=1;k<s.length();k++){
@@ -18,7 +16,8 @@ void Z_algorithm(const string &s){
         }
     }
 }
- 
+
+// z algorithm used in pattern matching
 int main(){
     string s, t;
     cin>>s>>t;
