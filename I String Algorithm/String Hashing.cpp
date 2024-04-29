@@ -4,29 +4,30 @@
 //using hashing O(1) + binary search O(logN) to find the longest common prefix string
 //then checkout the first different character to find which is bigger
 
-long long BASE = 256;
-long long MOD = 1256774137;         //this is a prime
+long long BASE = 131;
+long long MOD = 1256774137;			//this is a prime
+long long M2 =  998244353;			//this is a prime
 long long prefix[2000006];
 long long deg[2000006];
 string s;
- 
+
 //the mod operation is wasted time
 
 long long hash_v(int left, int right){
-    //cout<<"hash_v"<<left<<" "<<right<<endl;
+    // cout<<"hash_v "<<left<<" "<<right<<endl;
     int len = right - left + 1;
-    long long h = (prefix[right] - ((left == 0?0:prefix[left-1]) * deg[len])) % MOD;
+    long long h = ((right >= 0?prefix[right]:0) - ((left == 0?0:prefix[left-1]) * deg[len])) % MOD;
     return h >= 0? h : h + MOD;
 }
- 
- 
+
+
 bool same(int l1, int l2, int len){
     long long h1 = hash_v(l1, l1 + len-1);
     long long h2 = hash_v(l2, l2 + len-1);
     if(h1 == h2)    return true;
     return false;
 }
- 
+
 bool bigger(int l1, int l2, int len){
     int l = -1, r = len, mid;
     while(r - l > 1){
@@ -40,11 +41,10 @@ bool bigger(int l1, int l2, int len){
     if(r == len)    return false;
     if(s[l1+l] > s[l2+l])   return true;
     if(s[l1+l] < s[l2+l])   return false;
-    cout<<"bug"<<endl;
+    cout<<"bug"<<'\n';
     return false;
 }
- 
- 
+
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(0);
