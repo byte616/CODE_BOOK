@@ -21,8 +21,9 @@ int Bipartite_match(){
     add_edge();
     int ans=0;
     for(int i=1;i<=n;i++){
-        memset(vis,sizeof(vis));
+        memset(vis,0,sizeof(vis));
         if(dfs(i))ans++;
     }
     return ans;
 }
+
