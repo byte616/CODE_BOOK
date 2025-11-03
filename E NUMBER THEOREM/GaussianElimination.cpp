@@ -1,3 +1,4 @@
+// O(n^2 m)
 const long long MOD = 1000000007;
 
 void divdRow(vector<long long> &v, long long div){
