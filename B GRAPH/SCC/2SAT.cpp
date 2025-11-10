@@ -1,4 +1,4 @@
-// 2SAT --> SCC
+// O(n): 2SAT --> SCC
 #include <algorithm>
 #include <iostream>
 #include <vector>
