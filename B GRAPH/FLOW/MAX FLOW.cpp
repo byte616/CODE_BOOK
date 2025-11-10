@@ -1,3 +1,4 @@
+// O(V^2E)
 struct edge{
     int to; ll cap; int rev;
     edge(){}
@@ -57,4 +58,5 @@ main(){
     while(m--)add_edge(a,b,c);
     cout<<max_flow();
 }
+
 
