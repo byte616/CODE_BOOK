@@ -2,6 +2,7 @@
 // determine the lexicographically minimal rotation of a string.
 // O(|S|log|S|)
 
+// solution: hash+binary search
 #include<iostream>
 using namespace std;
  
@@ -71,5 +72,37 @@ int main(){
         ans += (s[i]);
     }
     cout<<ans<<'\n';
+    return 0;
+}
+
+
+// another solution (Lyndon factorization)
+#include<iostream>
+using namespace std;
+
+
+int main(){
+    string s;
+    cin>>s;
+    int len = s.length();
+    s = s + s + "|";
+    int pos = 0, cur = 1;
+    while(pos < len && cur < len){
+        int k = 0;
+        while(k < len && s[pos+k] == s[cur+k]){
+            k++;
+        }
+        if(s[pos+k] <= s[cur+k]){
+            cur = cur + k + 1;
+        }
+        else{
+            pos = max(cur, pos+k+1);
+            cur = pos+1;
+        }
+    }
+    for(int i=0;i<len;i++){
+        cout<<s[pos+i];
+    }
+    cout<<'\n';
     return 0;
 }
