@@ -1,3 +1,4 @@
+// O(VE)
 int n,m;//n->left size : m->right size
 int match[MAX_N];
 bool vis[MAX_N];
@@ -26,4 +27,5 @@ int Bipartite_match(){
     }
     return ans;
 }
+
 
