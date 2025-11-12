@@ -1,3 +1,6 @@
+// z[k]: 從 k 開始，與母字串（0開始）的最長共同前綴（單純的長度）
+// abcabcaf
+// 70040010
 int z[2000006];
  
 void Z_algorithm(const string &s){
