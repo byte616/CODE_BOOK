@@ -1,5 +1,16 @@
+// suffix array: sort the suffix substring
+// lcp: longest common prefix
+// Ex: abaa
+// 	suffix array: 
+// 	3 a
+// 	2 aa
+// 	0 abaa
+// 	1 baa
+// 	lcp: 1 1 0 0
+// For counting number of distinct substring: N - sa[i] - lcp[sa[i-1]]
 vector<int> rk(100005, 0), sec(100005, 0), sa(100005, 0), tmp(100005, 0);
- 
+vector<int> isa(100005, 0), lcp(100005, 0); 
+
 bool cmp(int x, int y){
     if(rk[x] != rk[y]){
         return rk[x] < rk[y];
@@ -35,6 +46,22 @@ void find_rank(const string &s){
         cout<<sa[i]<<" ";
     }
     cout<<'\n';*/
+	for(int i=0;i<N;i++){
+        isa[sa[i]] = i;
+    }
+    int k = 0;
+    for(int i=0;i<N;i++){
+        int pi = isa[i];
+        int pj = sa[pi - 1];
+        if(pi == 0) continue;
+        while(i+k < N && pj + k < N && s[i+k] == s[pj+k]){
+            k++;
+        }
+        lcp[pj] = k;
+        //cout<<"pi = "<<pi<<", pj = "<<pj<<", k = "<<k<<'\n';
+        k = max(k-1, 0);
+    }
+
 }
  
 bool check(int pos, const string &from, const string &target){
