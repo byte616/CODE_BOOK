@@ -1,3 +1,5 @@
+// suffix array: O(n \log^2 n) 
+// lcp: O(n) after create suffix array
 // suffix array: sort the suffix substring
 // lcp: longest common prefix
 // Ex: abaa
